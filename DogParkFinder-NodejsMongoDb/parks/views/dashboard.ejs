@@ -1,0 +1,44 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+  <div class="header__button">
+    <a href="/logout">
+      Logout
+    </a>
+  </div>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+      <h6>
+        <%= notif %>
+      </h6>
+      <a href="/parks/create" class="Add">+ Add New</a>
+      <ul class="admin-posts">
+      <% if (parks.length> 0) { %>
+        <% parks.forEach(park=> { %>
+          <li>
+            <a class="single" href="/parks/<%= park._id %>">
+              <h3 class="title">
+                <%= park.title %>
+              </h3>
+              <p class="snippet">
+                <%= park.snippet %>
+              </p>
+            </a>
+            <div class="admin-controls">
+              <a href="/edit-parks/<%= park._id %>" class="btn">Edit</a>
+              <form action="/delete-parks/<%= park._id %>?_method=DELETE" method="post">
+                <input type="submit" value="Delete" class="btn">
+              </form>
+            </div>
+            <% }) %>
+          </li>
+          <% } else { %>
+            <p>There are no parks to display...</p>
+            <% } %>
+      </ul>
+              </div>
+
+              <%- include("./partials/footer.ejs") %>
+  </body>
+
+</html>

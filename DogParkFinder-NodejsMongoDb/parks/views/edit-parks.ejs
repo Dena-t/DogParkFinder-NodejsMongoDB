@@ -1,0 +1,34 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+    <div class="header__button">
+        <a href="/logout">
+            Logout
+        </a>
+    </div>
+
+    <body>
+        <%- include("./partials/nav.ejs") %>
+           
+            <div>
+                <form action="/delete-parks/<%= park._id %>?_method=DELETE" method="post">
+                    <input type="submit" value="Delete" class="btn">
+                </form>
+                <form action="/edit-parks/<%= park._id %>?_method=PUT" method="post">
+
+                    <label for="title"><b>Park Title</b></label>
+                    <input type="text" placeholder="Post Title" id ="title" name="title" value="<%= park.title %>">
+
+                    <label for="snippet">Park snippet:</label>
+                    <input type="text" id="snippet" name="snippet" value="<%= park.snippet %>">
+                    <label for="body">Park body:</label>
+                    <textarea id="body" name="body" ><%= park.body %></textarea>
+                    <input type="submit" value="Update" class="btn">
+
+                </form>
+
+            </div>
+
+            <%- include("./partials/footer.ejs") %>
+    </body>
+
+</html>

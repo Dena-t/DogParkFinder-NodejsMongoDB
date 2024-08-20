@@ -1,0 +1,60 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= park.title %></h2>
+    <div class="content">
+      <p><%= park.body %></p>
+    </div>
+    <!-- <a class="delete" data-doc="<%= park._id %>">delete</a> -->
+  </div>
+  <div id="dogImageContainer"></div>
+
+  <%- include("./partials/footer.ejs") %>
+
+  <script>
+    // this code is no longer necessary
+    // const trashcan = document.querySelector('a.delete');
+
+    // trashcan.addEventListener('click', (e) => {
+    //   const endpoint = `/parks/${trashcan.dataset.doc}`;
+
+    //   fetch(endpoint, {
+    //     method: 'DELETE',
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => window.location.href = data.redirect)
+    //   .catch(err => console.log(err));
+    // });
+    
+        // Radom dog picture fetch
+        async function fetchDogImage() {
+            try {
+                const response = await fetch('https://dog.ceo/api/breeds/image/random');
+                const data = await response.json();
+                const imageUrl = data.message;
+                displayImage(imageUrl);
+            } catch (error) {
+                console.error('Error fetching dog image:', error);
+            }
+        }
+
+        // Function to display the image
+        function displayImage(imageUrl) {
+            const imageContainer = document.getElementById('dogImageContainer');
+            const imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            imageContainer.innerHTML = ''; // Clear previous content
+            imageContainer.appendChild(imageElement);
+        }
+
+        // Call the function to fetch and display the image
+        fetchDogImage();
+
+  </script>
+
+</body>
+</html>

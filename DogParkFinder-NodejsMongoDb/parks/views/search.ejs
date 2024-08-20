@@ -1,0 +1,36 @@
+
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+
+  <div class="author">
+    <h1 class="author__heading">Search Results</h1>
+  </div>
+  
+  <div class="blogs content">
+  
+    <% if (parks.length > 0) { %>
+      <% parks.forEach(park => { %>
+
+        <a class="single" href="/parks/<%= park._id %>">
+          <h3 class="title"><%= park.title %></h3>
+          <p class="snippet"><%= park.snippet %></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no parks to display...</p>
+    <% } %>
+  
+</div>
+
+  
+    
+  
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>
+

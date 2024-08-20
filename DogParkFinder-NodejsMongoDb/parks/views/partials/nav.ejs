@@ -1,0 +1,22 @@
+<nav>
+  <div class="site-title">
+    <a href="/"><h1>monPitou - ParkFinder</h1></a>
+    <p>A WebServices Team01 project</p>
+
+  </div>
+  <div class="search">
+  <%- include("./search.ejs")  %>
+</div>
+
+  <ul>
+    <li><a href="/">Parks</a></li>
+    <li><a href="/about">About</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn"> Admin Panel</a>
+    <div class="dropdown-content">
+     <a href="/admin">Login</a>
+     <a href="/dashboard">Dashboard</a>
+  </div> </li>
+  </ul>
+
+</nav>
